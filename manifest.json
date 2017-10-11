@@ -1,0 +1,15 @@
+{
+	"manifest_version": 2,
+	"name": "yFav",
+	"description": "Import youtube links into bookmarks",
+	"version": "1.0",
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"activeTab",
+		"bookmarks",
+		"tabs"
+	]
+}
