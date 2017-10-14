@@ -16,12 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		chrome.tabs.query({active: true, currentWindow: true}, (tabs)=>{
 			var tab = tabs[0];
 			chrome.tabs.executeScript(tab.id, {file:'collect.js'}, (results)=>{
-				results[0].forEach((lnk)=>{
-					chrome.bookmarks.create({
-						title:lnk.title,
-						url:lnk.href
-					});
-				})
+				chrome.bookmarks.create({
+					title:'yfav'
+				}, (bookmarkNode)=> {
+					results[0].forEach((lnk)=>{
+						chrome.bookmarks.create({
+							parentId:bookmarkNode.id,
+							title:lnk.title,
+							url:lnk.href
+						});
+					})
+				});
 			});
 		});
 	}
